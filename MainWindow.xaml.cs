@@ -31,11 +31,15 @@ namespace DemoRepositoryPattern
         public MainWindow()
         {
             InitializeComponent();
+            //Unit of work approach
             //_unitOfWork = new UnitOfWork(new NorthwindContext());
+            //var categoriesName = _unitOfWork.CategoryRepository.GetCategoriesName();
+
+            //Repository approach
             _productRepository = new ProductRepository(new NorthwindContext());
             _categoryRepository = new CategoryRepository(new NorthwindContext());
-            //var categoriesName = _unitOfWork.CategoryRepository.GetCategoriesName();
             var categoriesName = _categoryRepository.GetCategoriesName();
+            
             Products.ItemsSource = categoriesName;
         }
 
@@ -58,16 +62,26 @@ namespace DemoRepositoryPattern
             {
                 toPrice = decimal.Parse(toText);
             }
+
+            //Unit of work approach
             //var products = _unitOfWork.ProductRepository.GetProductsByPriceRange(selectedCategoryName, fromPrice, toPrice);
+
+            //Repository approach
             var products = _productRepository.GetProductsByPriceRange(selectedCategoryName, fromPrice, toPrice);
+
+
             var productsList = products.ToList();
             ProductsListBox.ItemsSource = productsList;
         }
 
         private void LoadData()
         {
+            //Unit of work approach
             //var products = _unitOfWork.Repository.GetAll();
+
+            //Repository approach
             var products = _productRepository.GetAll();
+
             ProductsListBox.ItemsSource = products.ToList();
         }
 
@@ -92,8 +106,10 @@ namespace DemoRepositoryPattern
             selectedProduct.CompanyName = SupplierBox.Text;
             selectedProduct.UnitPrice = decimal.Parse(PriceBox.Text);
 
-
+            //Repository approach
             _productRepository.UpdateProduct(selectedProduct);
+
+            //Unit of work approach
             //_unitOfWork.ProductRepository.UpdateProduct(selectedProduct);
             //_unitOfWork.Save();
             MessageBox.Show("Product updated successfully");
@@ -107,7 +123,10 @@ namespace DemoRepositoryPattern
                 var selectedProduct = ProductsListBox.SelectedItem as Product;
                 if (selectedProduct != null)
                 {
+                    //Repository approach
                     _productRepository.DeleteProduct(selectedProduct);
+
+                    //Unit of work approach
                     //_unitOfWork.ProductRepository.DeleteProduct(selectedProduct);
                     // _unitOfWork.Save();
                 }
