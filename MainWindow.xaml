@@ -45,8 +45,8 @@
         <TextBox x:Name="CategoryBox" HorizontalAlignment="Left" Margin="471,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="SupplierBox" HorizontalAlignment="Left" Margin="472,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="PriceBox" HorizontalAlignment="Left" Margin="471,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="429,313,0,0" VerticalAlignment="Top" Height="24" Width="67" Click="Button_Click_1"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="650,313,0,0" VerticalAlignment="Top" Height="24" Width="67" Click="Button_Click_2"/>
+        <Button IsEnabled="False" Content="Update" HorizontalAlignment="Left" Margin="429,313,0,0" VerticalAlignment="Top" Height="24" Width="67" Click="Button_Click_1"/>
+        <Button IsEnabled="False" Content="Delete" HorizontalAlignment="Left" Margin="650,313,0,0" VerticalAlignment="Top" Height="24" Width="67" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
